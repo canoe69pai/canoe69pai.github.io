@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我爱辅助网-游戏辅助工具资源导航与使用指南</title>
+<meta name="description" content="我爱辅助网是一个面向游戏玩家的辅助工具资源导航站，整理辅助分类、热门工具、更新动态、使用教程与安全注意事项，帮助玩家快速了解辅助工具的选择与使用。">
+<meta name="keywords" content="我爱辅助网,游戏辅助,辅助工具,辅助下载,游戏辅助资源,辅助使用教程,辅助安全">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0f1218;
+  --bg-soft:#161b24;
+  --card:#1c222d;
+  --line:#2a3242;
+  --main:#3ea6ff;
+  --main-deep:#1f7fe0;
+  --accent:#ffb545;
+  --text:#e8edf5;
+  --text-dim:#98a4b8;
+  --radius:12px;
+}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+  font-size:15px;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+
+/* 顶部 */
+.top-bar{
+  background:#0b0e13;
+  border-bottom:1px solid var(--line);
+  font-size:13px;
+  color:var(--text-dim);
+}
+.top-bar .wrap{
+  display:flex;justify-content:space-between;align-items:center;
+  height:38px;flex-wrap:wrap;gap:6px;
+}
+.top-bar span{white-space:nowrap}
+
+/* 页眉 */
+header.site-header{
+  background:linear-gradient(180deg,#141a23 0%,#0f1218 100%);
+  border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:50;
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:14px 0;flex-wrap:wrap;
+}
+.logo{
+  display:flex;align-items:center;gap:10px;font-size:21px;font-weight:700;
+  letter-spacing:.5px;
+}
+.logo .mark{
+  width:38px;height:38px;border-radius:10px;
+  background:linear-gradient(135deg,var(--main),#7c5cff);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;font-weight:800;color:#fff;
+  box-shadow:0 4px 14px rgba(62,166,255,.35);
+}
+.logo em{font-style:normal;color:var(--main)}
+nav.main-nav ul{
+  list-style:none;display:flex;gap:4px;flex-wrap:wrap;
+}
+nav.main-nav a{
+  display:block;padding:8px 14px;border-radius:8px;
+  font-size:14px;color:var(--text-dim);transition:.2s;
+}
+nav.main-nav a:hover,nav.main-nav a.active{
+  background:rgba(62,166,255,.12);color:var(--main);
+}
+.search-box{
+  display:flex;background:var(--bg-soft);border:1px solid var(--line);
+  border-radius:8px;overflow:hidden;min-width:210px;
+}
+.search-box input{
+  background:transparent;border:none;outline:none;color:var(--text);
+  padding:9px 12px;font-size:14px;width:100%;
+}
+.search-box input::placeholder{color:#5f6b80}
+.search-box button{
+  background:var(--main);border:none;color:#fff;padding:0 16px;
+  cursor:pointer;font-size:14px;transition:.2s;
+}
+.search-box button:hover{background:var(--main-deep)}
+
+/* 首屏 */
+.hero{
+  background:
+    radial-gradient(900px 340px at 12% -10%,rgba(62,166,255,.20),transparent 65%),
+    radial-gradient(700px 300px at 92% 0%,rgba(124,92,255,.18),transparent 60%),
+    #121722;
+  border-bottom:1px solid var(--line);
+  padding:46px 0 40px;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.35fr 1fr;gap:34px;align-items:center;
+}
+.hero h1{
+  font-size:30px;line-height:1.4;font-weight:800;margin-bottom:14px;
+}
+.hero h1 span{color:var(--main)}
+.hero p.lead{
+  color:var(--text-dim);font-size:15px;margin-bottom:20px;max-width:600px;
+}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.hero-tags a{
+  font-size:13px;padding:6px 12px;border-radius:20px;
+  background:rgba(255,255,255,.05);border:1px solid var(--line);
+  color:var(--text-dim);transition:.2s;
+}
+.hero-tags a:hover{border-color:var(--main);color:var(--main)}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-block;padding:11px 24px;border-radius:9px;
+  font-size:14px;font-weight:600;transition:.2s;cursor:pointer;border:none;
+}
+.btn-primary{background:var(--main);color:#fff;box-shadow:0 6px 18px rgba(62,166,255,.3)}
+.btn-primary:hover{background:var(--main-deep);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--main);color:var(--main)}
+.hero-panel{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px;
+}
+.hero-panel h3{
+  font-size:15px;margin-bottom:14px;display:flex;align-items:center;gap:8px;
+}
+.hero-panel h3::before{
+  content:"";width:4px;height:16px;border-radius:2px;background:var(--main);
+}
+.stat-list{list-style:none;display:grid;gap:10px}
+.stat-list li{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:13.5px;padding:9px 12px;border-radius:8px;background:var(--bg-soft);
+  color:var(--text-dim);
+}
+.stat-list li b{color:var(--main);font-weight:600}
+.stat-list li em{font-style:normal;color:var(--accent)}
+
+/* 通用区块 */
+section.block{padding:46px 0}
+.section-head{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:16px;margin-bottom:24px;flex-wrap:wrap;
+}
+.section-head h2{
+  font-size:22px;font-weight:700;position:relative;padding-left:14px;
+}
+.section-head h2::before{
+  content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:5px;height:20px;border-radius:3px;
+  background:linear-gradient(180deg,var(--main),#7c5cff);
+}
+.section-head p{color:var(--text-dim);font-size:13.5px}
+.section-head .more{font-size:13.5px;color:var(--main)}
+.section-head .more:hover{text-decoration:underline}
+
+/* 分类 */
+.cat-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+}
+.cat-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px;transition:.22s;
+}
+.cat-card:hover{
+  transform:translateY(-3px);border-color:rgba(62,166,255,.5);
+  box-shadow:0 10px 26px rgba(0,0,0,.35);
+}
+.cat-card .icon{
+  width:42px;height:42px;border-radius:10px;display:flex;
+  align-items:center;justify-content:center;font-size:20px;
+  background:rgba(62,166,255,.12);margin-bottom:12px;
+}
+.cat-card h3{font-size:15.5px;margin-bottom:8px}
+.cat-card p{font-size:13px;color:var(--text-dim);line-height:1.65;margin-bottom:10px}
+.cat-card .links{display:flex;flex-wrap:wrap;gap:6px}
+.cat-card .links a{
+  font-size:12px;color:var(--text-dim);background:var(--bg-soft);
+  padding:3px 9px;border-radius:6px;transition:.2s;
+}
+.cat-card .links a:hover{color:var(--main);background:rgba(62,166,255,.12)}
+
+/* 热门工具列表 */
+.tool-layout{display:grid;grid-template-columns:1fr 320px;gap:26px;align-items:start}
+.tool-list{display:grid;gap:14px}
+.tool-item{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 18px;display:flex;gap:16px;align-items:flex-start;transition:.2s;
+}
+.tool-item:hover{border-color:rgba(62,166,255,.45)}
+.tool-cover{
+  width:56px;height:56px;flex:0 0 56px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;font-weight:700;color:#fff;
+  background:linear-gradient(135deg,#2b6cb0,#7c5cff);
+}
+.tool-body{flex:1;min-width:0}
+.tool-body h3{
+  font-size:15.5px;margin-bottom:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.badge{
+  font-size:11px;padding:2px 8px;border-radius:20px;font-weight:500;
+  background:rgba(255,181,69,.15);color:var(--accent);
+}
+.badge.blue{background:rgba(62,166,255,.15);color:var(--main)}
+.tool-body p{font-size:13px;color:var(--text-dim);margin-bottom:9px}
+.tool-meta{
+  display:flex;gap:16px;font-size:12.5px;color:#7a8699;flex-wrap:wrap;
+}
+.tool-meta span::before{content:"·";margin-right:6px;color:#3d4759}
+.tool-meta span:first-child::before{content:"";margin:0}
+
+/* 侧栏 */
+.side-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px;margin-bottom:18px;
+}
+.side-card h3{
+  font-size:15px;margin-bottom:14px;padding-bottom:10px;
+  border-bottom:1px solid var(--line);
+}
+.rank-list{list-style:none;counter-reset:rk}
+.rank-list li{
+  counter-increment:rk;display:flex;gap:10px;align-items:baseline;
+  padding:8px 0;font-size:13.5px;border-bottom:1px dashed rgba(255,255,255,.06);
+}
+.rank-list li:last-child{border-bottom:none}
+.rank-list li::before{
+  content:counter(rk);flex:0 0 20px;height:20px;border-radius:5px;
+  background:var(--bg-soft);color:var(--text-dim);font-size:12px;
+  display:flex;align-items:center;justify-content:center;
+}
+.rank-list li:nth-child(-n+3)::before{
+  background:rgba(62,166,255,.18);color:var(--main);font-weight:700;
+}
+.rank-list a{flex:1;color:var(--text);transition:.2s}
+.rank-list a:hover{color:var(--main)}
+.rank-list .hot{font-size:11.5px;color:#7a8699}
+
+/* 更新动态 */
+.update-table{
+  width:100%;border-collapse:collapse;background:var(--card);
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  font-size:13.5px;
+}
+.update-table th,.update-table td{
+  padding:12px 16px;text-align:left;border-bottom:1px solid var(--line);
+}
+.update-table th{
+  background:var(--bg-soft);color:var(--text-dim);font-weight:500;font-size:13px;
+}
+.update-table tr:last-child td{border-bottom:none}
+.update-table td a{color:var(--text);transition:.2s}
+.update-table td a:hover{color:var(--main)}
+.update-table td:last-child{color:#7a8699;white-space:nowrap}
+
+/* 使用指南 */
+.guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.guide-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px;position:relative;
+}
+.guide-card .num{
+  font-size:26px;font-weight:800;color:rgba(62,166,255,.28);
+  line-height:1;margin-bottom:10px;
+}
+.guide-card h3{font-size:15.5px;margin-bottom:9px}
+.guide-card p{font-size:13px;color:var(--text-dim);line-height:1.75}
+
+/* 安全提示 */
+.safety{
+  background:linear-gradient(135deg,rgba(255,181,69,.08),rgba(62,166,255,.06));
+  border:1px solid rgba(255,181,69,.25);border-radius:var(--radius);
+  padding:24px 26px;
+}
+.safety h2{
+  font-size:19px;margin-bottom:14px;color:var(--accent);
+  display:flex;align-items:center;gap:9px;
+}
+.safety ul{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.safety li{
+  font-size:13.5px;color:var(--text-dim);padding-left:20px;position:relative;
+}
+.safety li::before{
+  content:"✓";position:absolute;left:0;top:0;color:var(--accent);font-weight:700;
+}
+
+/* FAQ */
+.faq-list{display:grid;gap:12px}
+.faq-item{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:0 20px;overflow:hidden;
+}
+.faq-item summary{
+  cursor:pointer;list-style:none;padding:16px 0;font-size:15px;font-weight:600;
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{
+  content:"+";font-size:19px;color:var(--main);font-weight:400;transition:.2s;
+}
+.faq-item[open] summary::after{content:"−"}
+.faq-item p{
+  font-size:13.5px;color:var(--text-dim);padding-bottom:16px;line-height:1.8;
+}
+
+/* 页脚 */
+footer.site-footer{
+  background:#0b0e13;border-top:1px solid var(--line);
+  padding:40px 0 24px;margin-top:20px;
+}
+.footer-grid{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px;margin-bottom:28px;
+}
+.footer-grid h4{font-size:14.5px;margin-bottom:14px;color:var(--text)}
+.footer-grid p{font-size:13px;color:var(--text-dim);line-height:1.8}
+.footer-grid ul{list-style:none;display:grid;gap:9px}
+.footer-grid ul a{font-size:13px;color:var(--text-dim);transition:.2s}
+.footer-grid ul a:hover{color:var(--main)}
+.footer-bottom{
+  border-top:1px solid var(--line);padding-top:18px;
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  font-size:12.5px;color:#6a768a;
+}
+
+/* 响应式 */
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:1fr}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .tool-layout{grid-template-columns:1fr}
+  .guide-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .safety ul{grid-template-columns:1fr}
+}
+@media (max-width:680px){
+  .header-inner{flex-direction:column;align-items:stretch}
+  nav.main-nav ul{justify-content:flex-start}
+  .search-box{min-width:100%}
+  .hero{padding:32px 0 28px}
+  .hero h1{font-size:23px}
+  .cat-grid{grid-template-columns:1fr}
+  section.block{padding:34px 0}
+  .tool-item{flex-direction:row}
+  .update-table th:nth-child(3),
+  .update-table td:nth-child(3){display:none}
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="wrap">
+    <span>本站为游戏辅助工具资源导航与信息整理平台，内容仅供参考</span>
+    <span>请遵守游戏用户协议与相关法律法规</span>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="/">
+      <span class="mark">爱</span>
+      <span>我爱<em>辅助网</em></span>
+    </a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#categories" class="active">辅助分类</a></li>
+        <li><a href="#hot">热门工具</a></li>
+        <li><a href="#updates">更新动态</a></li>
+        <li><a href="#guide">使用指南</a></li>
+        <li><a href="#safety">安全提示</a></li>
+        <li><a href="#faq">常见问题</a></li>
+      </ul>
+    </nav>
+    <form class="search-box" onsubmit="return false;">
+      <input type="text" placeholder="搜索辅助类型或工具名称" aria-label="搜索辅助类型或工具名称">
+      <button type="button">搜索</button>
+    </form>
+  </div>
+</header>
+
+<main>
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>我爱辅助网 · 游戏辅助工具<span>资源导航与使用参考</span></h1>
+        <p class="lead">
+          面对五花八门的辅助工具，玩家最关心的往往是三件事：这类工具到底能做什么、从哪里获取更可靠、使用前后需要注意什么。我爱辅助网把分散的信息按游戏类型、功能方向和使用场景整理成清晰的导航，帮助你更快找到方向，也更清楚地了解风险与边界。
+        </p>
+        <div class="hero-tags">
+          <a href="#categories">角色扮演类</a>
+          <a href="#categories">射击竞技类</a>
+          <a href="#categories">策略模拟类</a>
+          <a href="#categories">休闲小游戏</a>
+          <a href="#categories">脚本工具</a>
+          <a href="#categories">修改器</a>
+          <a href="#categories">辅助教程</a>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#hot">浏览热门工具</a>
+          <a class="btn btn-ghost" href="#guide">查看使用指南</a>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <h3>导航站能帮你做什么</h3>
+        <ul class="stat-list">
+          <li><span>按游戏类型筛选辅助方向</span><b>分类导航</b></li>
+          <li><span>了解工具的常见功能与用途</span><b>功能说明</b></li>
+          <li><span>查看整理后的版本与更新信息</span><b>更新记录</b></li>
+          <li><span>掌握使用前后的注意事项</span><b>风险提示</b></li>
+          <li><span>常见疑问集中解答</span><b>FAQ</b></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 分类 -->
+  <section class="block" id="categories">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>辅助分类导航</h2>
+          <p>按游戏玩法与功能方向归类，方便快速定位你需要的类型</p>
+        </div>
+        <a class="more" href="#hot">查看热门工具 →</a>
+      </div>
+      <div class="cat-grid">
+        <article class="cat-card">
+          <div class="icon">🎮</div>
+          <h3>角色扮演类辅助</h3>
+          <p>常见于刷图、任务、资源收集等重复性环节，方向多集中在自动化操作与效率提升。</p>
+          <div class="links">
+            <a href="#hot">自动任务</a><a href="#hot">资源采集</a><a href="#hot">挂机脚本</a>
+          </div>
+        </article>
+        <article class="cat-card">
+          <div class="icon">🎯</div>
+          <h3>射击竞技类辅助</h3>
+          <p>涉及瞄准、视野、压枪等方向，此类内容对游戏公平性影响较大，需格外谨慎对待。</p>
+          <div class="links">
+            <a href="#safety">风险说明</a><a href="#faq">封号问题</a>
+          </div>
+        </article>
+        <article class="cat-card">
+          <div class="icon">🧩</div>
+          <h3>策略与模拟类</h3>
+          <p>多见于资源管理、建造经营类玩法，辅助方向偏向数据查看、批量操作与规划辅助。</p>
+          <div class="links">
+            <a href="#hot">数据查看</a><a href="#hot">批量操作</a>
+          </div>
+        </article>
+        <article class="cat-card">
+          <div class="icon">🕹️</div>
+          <h3>休闲小游戏工具</h3>
+          <p>轻量级小游戏常出现连点、自动点击等需求，工具形态相对简单，注意来源可靠性。</p>
+          <div class="links">
+            <a href="#hot">连点工具</a><a href="#hot">自动点击</a>
+          </div>
+        </article>
+        <article class="cat-card">
+          <div class="icon">⚙️</div>
+          <h3>脚本与宏工具</h3>
+          <p>通过录制或编写脚本实现重复操作，属于通用型工具，适用范围不限于单一游戏。</p>
+          <div class="links">
+            <a href="#guide">脚本入门</a><a href="#hot">宏命令</a>
+          </div>
+        </article>
+        <article class="cat-card">
+          <div class="icon">🔧</div>
+          <h3>修改器与存档工具</h3>
+          <p>多用于单机或离线场景，涉及数值修改、存档编辑等，联机环境使用风险较高。</p>
+          <div class="links">
+            <a href="#safety">使用边界</a><a href="#faq">常见疑问</a>
+          </div>
+        </article>
+        <article class="cat-card">
+          <div class="icon">📘</div>
+          <h3>辅助使用教程</h3>
+          <p>整理安装、配置、排错等基础流程，帮助初次接触的玩家理解工具运行方式。</p>
+          <div class="links">
+            <a href="#guide">安装配置</a><a href="#guide">故障排查</a>
+          </div>
+        </article>
+        <article class="cat-card">
+          <div class="icon">🛡️</div>
+          <h3>安全与合规参考</h3>
+          <p>汇总常见的风险类型、账号影响与合规边界，帮助玩家做出更理性的判断。</p>
+          <div class="links">
+            <a href="#safety">风险类型</a><a href="#faq">账号安全</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 热门工具 + 侧栏 -->
+  <section class="block" id="hot" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>热门工具与方向整理</h2>
+          <p>以下为常见辅助方向的类型说明，具体工具请自行核实来源与安全性</p>
+        </div>
+      </div>
+      <div class="tool-layout">
+        <div class="tool-list">
+
+          <article class="tool-item">
+            <div class="tool-cover">自</div>
+            <div class="tool-body">
+              <h3>自动化任务脚本 <span class="badge">常见方向</span></h3>
+              <p>用于处理日常任务、签到、重复副本等机械性操作，核心价值在于减少重复劳动。使用前需确认游戏是否允许此类行为。</p>
+              <div class="tool-meta">
+                <span>适合：日常任务繁重的游戏</span>
+                <span>形式：脚本 / 宏</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-item">
+            <div class="tool-cover">连</div>
+            <div class="tool-body">
+              <h3>连点与自动点击工具 <span class="badge blue">轻量工具</span></h3>
+              <p>通过模拟鼠标或触屏点击实现连续操作，常见于点击类、挂机类小游戏。设置点击间隔与坐标是主要使用环节。</p>
+              <div class="tool-meta">
+                <span>适合：点击类玩法</span>
+                <span>形式：独立小工具</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-item">
+            <div class="tool-cover">数</div>
+            <div class="tool-body">
+              <h3>数据查看与信息整理 <span class="badge">辅助决策</span></h3>
+              <p>帮助玩家查看角色属性、装备数据、资源统计等信息，用于规划养成路线，本身不直接改变游戏数值。</p>
+              <div class="tool-meta">
+                <span>适合：养成规划</span>
+                <span>形式：查询工具 / 表格</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-item">
+            <div class="tool-cover">改</div>
+            <div class="tool-body">
+              <h3>单机修改器 <span class="badge">仅限离线</span></h3>
+              <p>面向单机或离线模式，用于调整数值、解锁内容等。在联机环境中使用通常会被判定为违规，风险较高。</p>
+              <div class="tool-meta">
+                <span>适合：单机离线游戏</span>
+                <span>形式：修改器</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-item">
+            <div class="tool-cover">宏</div>
+            <div class="tool-body">
+              <h3>键鼠宏与操作录制 <span class="badge blue">通用型</span></h3>
+              <p>通过录制操作序列或编写宏命令，实现一键触发多步操作。部分游戏内置宏功能，使用前建议先了解官方规则。</p>
+              <div class="tool-meta">
+                <span>适合：多步重复操作</span>
+                <span>形式：驱动 / 软件宏</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-item">
+            <div class="tool-cover">优</div>
+            <div class="tool-body">
+              <h3>游戏优化与辅助设置 <span class="badge blue">非侵入</span></h3>
+              <p>包括帧率优化、画质调整、按键映射等，属于提升体验的常规设置类工具，一般不涉及游戏数据修改。</p>
+              <div class="tool-meta">
+                <span>适合：体验优化</span>
+                <span>形式：设置工具</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <aside>
+          <div class="side-card">
+            <h3>关注度较高的方向</h3>
+            <ul class="rank-list">
+              <li><a href="#categories">自动化任务脚本</a><span class="hot">高频</span></li>
+              <li><a href="#categories">连点与自动点击</a><span class="hot">高频</span></li>
+              <li><a href="#categories">数据查看工具</a><span class="hot">中频</span></li>
+              <li><a href="#categories">键鼠宏与录制</a><span class="hot">中频</span></li>
+              <li><a href="#categories">单机修改器</a><span class="hot">中频</span></li>
+              <li><a href="#categories">游戏优化设置</a><span class="hot">中频</span></li>
+            </ul>
+          </div>
+          <div class="side-card">
+            <h3>新手建议</h3>
+            <p style="font-size:13px;color:var(--text-dim);line-height:1.8;">
+              如果你刚接触辅助工具，建议先弄清楚三件事：这个工具改变了游戏的哪些环节、游戏官方对此是什么态度、一旦出现问题会带来什么后果。想清楚这三点，再决定要不要继续。
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 更新动态 -->
+  <section class="block" id="updates">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>更新动态与信息整理</h2>
+          <p>记录辅助方向的类型变化与常见问题，帮助了解整体趋势</p>
+        </div>
+      </div>
+      <table class="update-table">
+        <thead>
+          <tr>
+            <th>内容方向</th>
+            <th>说明</th>
+            <th>类型</th>
+            <th>整理状态</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="#categories">自动化脚本适配思路</a></td>
+            <td>游戏版本更新后，脚本逻辑往往需要同步调整</td>
+            <td>经验整理</td>
+            <td>持续更新</td>
+          </tr>
+          <tr>
+            <td><a href="#categories">连点工具参数设置</a></td>
+            <td>点击间隔、触发方式等基础配置说明</td>
+            <td>使用教程</td>
+            <td>已整理</td>
+          </tr>
+          <tr>
+            <td><a href="#safety">辅助工具风险类型汇总</a></td>
+            <td>归纳常见的账号与设备风险来源</td>
+            <td>安全参考</td>
+            <td>已整理</td>
+          </tr>
+          <tr>
+            <td><a href="#faq">常见报错与排查方向</a></td>
+            <td>工具无法启动、被拦截等问题的初步排查思路</td>
+            <td>问题排查</td>
+            <td>持续更新</td>
+          </tr>
+          <tr>
+            <td><a href="#guide">单机与联机的使用边界</a></td>
+            <td>说明不同游戏环境下辅助使用的差异</td>
+            <td>合规参考</td>
+            <td>已整理</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="block" id="guide" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>辅助工具使用基础指南</h2>
+          <p>从了解需求到实际使用，四个环节帮你理清思路</p>
+        </div>
+      </div>
+      <div class="guide-grid">
+        <article class="guide-card">
+          <div class="num">01</div>
+          <h3>先明确需求</h3>
+          <p>想清楚自己是想节省重复操作时间，还是想调整游戏体验。需求不同，对应的工具类型和风险程度也不同。不要因为别人在用就盲目跟风。</p>
+        </article>
+        <article class="guide-card">
+          <div class="num">02</div>
+          <h3>核实来源可靠性</h3>
+          <p>优先选择有明确说明、可追溯来源的工具。对来源不明的文件保持警惕，安装前可用安全软件扫描，避免因小失大。</p>
+        </article>
+        <article class="guide-card">
+          <div class="num">03</div>
+          <h3>了解官方态度</h3>
+          <p>不同游戏对辅助工具的规定差异很大。使用前建议查阅游戏用户协议或官方公告，明确哪些行为被允许、哪些会被处理。</p>
+        </article>
+        <article class="guide-card">
+          <div class="num">04</div>
+          <h3>做好账号与设备保护</h3>
+          <p>避免在重要账号上直接测试未知工具，注意账号绑定与二次验证设置，重要数据提前备份，降低潜在损失。</p>
+        </article>
+        <article class="guide-card">
+          <div class="num">05</div>
+          <h3>掌握基础排错</h3>
+          <p>工具无法运行时，先检查系统版本、权限设置、杀毒拦截等常见原因，再判断是否为工具本身的问题。</p>
+        </article>
+        <article class="guide-card">
+          <div class="num">06</div>
+          <h3>及时评估与止损</h3>
+          <p>使用过程中如出现异常提示、账号异常或设备卡顿，应立即停止并检查原因，不要抱有侥幸心理继续使用。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 安全提示 -->
+  <section class="block" id="safety">
+    <div class="wrap">
+      <div class="safety">
+        <h2>⚠ 使用辅助工具前请务必了解</h2>
+        <ul>
+          <li>多数网络游戏明确禁止影响公平性的第三方工具，使用可能导致账号受限。</li>
+          <li>来源不明的程序可能携带恶意代码，威胁账号与设备安全。</li>
+          <li>辅助工具常需较高系统权限，权限滥用会带来额外风险。</li>
+          <li>游戏版本更新后，旧工具可能失效甚至引发异常。</li>
+          <li>单机与联机环境的规则不同，切勿混用判断标准。</li>
+          <li>涉及付费的辅助服务风险更高，需格外谨慎。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block" id="faq" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>常见问题解答</h2>
+          <p>关于辅助工具，玩家问得最多的几个问题</p>
+        </div>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary>使用游戏辅助工具会被封号吗？</summary>
+          <p>这取决于具体游戏的规定和工具的行为方式。多数网络游戏的用户协议禁止使用影响公平性的第三方程序，一旦被判定违规，可能面临账号限制甚至封禁。建议在使用前查阅官方规则，并自行评估风险。</p>
+        </details>
+        <details class="faq-item">
+          <summary>单机游戏用修改器也有风险吗？</summary>
+          <p>单机或纯离线环境下，修改器一般不会影响其他玩家，风险相对较低。但如果游戏带有联机功能、排行榜或云存档，使用修改器仍可能触发检测。建议确认游戏是否完全离线后再决定。</p>
+        </details>
+        <details class="faq-item">
+          <summary>怎么判断一个辅助工具是否安全？</summary>
+          <p>可以从来源是否可追溯、是否有清晰的说明文档、是否要求异常权限、是否被安全软件报毒等角度判断。没有任何工具可以保证绝对安全，保持谨慎、不在重要账号上测试是基本原则。</p>
+        </details>
+        <details class="faq-item">
+          <summary>辅助工具更新后不能用了怎么办？</summary>
+          <p>游戏版本更新后，辅助工具往往需要同步适配，这是常见现象。可以先检查是否有新版本、确认系统环境是否变化，同时也要意识到继续使用旧版本可能带来额外风险。</p>
+        </details>
+        <details class="faq-item">
+          <summary>本站提供辅助工具下载吗？</summary>
+          <p>本站定位为信息整理与导航参考，主要帮助玩家了解辅助工具的类型、功能方向和使用注意事项，不对具体工具的可用性与安全性作出保证。请自行核实来源并承担相应风险。</p>
+        </details>
+        <details class="faq-item">
+          <summary>为什么有些辅助方向不建议尝试？</summary>
+          <p>部分辅助方向直接破坏游戏公平性，对账号和其他玩家影响较大，同时法律与平台规则风险也更高。对于这类方向，我们更建议玩家谨慎对待，把精力放在正常游戏体验上。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>我爱辅助网</h4>
+        <p>一个面向游戏玩家的辅助工具资源导航与信息整理平台，帮助了解辅助类型、使用方式与风险边界。内容仅供参考，请遵守游戏规则与相关法律法规。</p>
+      </div>
+      <div>
+        <h4>内容导航</h4>
+        <ul>
+          <li><a href="#categories">辅助分类</a></li>
+          <li><a href="#hot">热门工具</a></li>
+          <li><a href="#updates">更新动态</a></li>
+          <li><a href="#guide">使用指南</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>帮助与参考</h4>
+        <ul>
+          <li><a href="#safety">安全提示</a></li>
+          <li><a href="#faq">常见问题</a></li>
+          <li><a href="#guide">基础排错</a></li>
+          <li><a href="#guide">合规边界</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>使用原则</h4>
+        <ul>
+          <li><a href="#safety">遵守游戏协议</a></li>
+          <li><a href="#safety">保护账号安全</a></li>
+          <li><a href="#safety">核实工具来源</a></li>
+          <li><a href="#safety">理性评估风险</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 我爱辅助网 · 信息整理与导航参考</span>
+      <span>本站内容不构成任何使用建议，请自行判断并承担相应责任</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var navLinks = document.querySelectorAll('nav.main-nav a');
+  navLinks.forEach(function(link){
+    link.addEventListener('click', function(){
+      navLinks.forEach(function(l){ l.classList.remove('active'); });
+      this.classList.add('active');
+    });
+  });
+
+  var searchInput = document.querySelector('.search-box input');
+  var searchBtn = document.querySelector('.search-box button');
+  function doSearch(){
+    var val = searchInput.value.trim();
+    if(!val){
+      searchInput.focus();
+      return;
+    }
+    var target = document.getElementById('hot');
+    if(target){
+      target.scrollIntoView({behavior:'smooth'});
+    }
+  }
+  searchBtn.addEventListener('click', doSearch);
+  searchInput.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ doSearch(); }
+  });
+})();
+</script>
+
+</body>
+  </html>
