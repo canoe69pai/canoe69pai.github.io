@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>打僵尸-僵尸题材游戏玩法、类型与生存技巧指南</title>
+<meta name="description" content="打僵尸主题内容指南，介绍僵尸题材游戏的常见类型、玩法机制、武器与生存策略、选择建议和常见问题，帮助玩家快速了解如何上手和挑选适合自己的打僵尸游戏。">
+<meta name="keywords" content="打僵尸,僵尸游戏,末日生存,射击游戏,生存策略,僵尸题材">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+:root{
+  --bg:#0e1116;
+  --bg-soft:#161b23;
+  --panel:#1c232d;
+  --line:#2a3340;
+  --text:#e8edf3;
+  --muted:#9aa7b5;
+  --accent:#7cd44a;
+  --accent-2:#c8f04a;
+  --danger:#e0533a;
+  --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB",Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{width:min(1180px,92%);margin:0 auto}
+
+/* ---------- header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(14,17,22,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:18px;padding:14px 0;
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;letter-spacing:.5px}
+.brand-mark{
+  width:34px;height:34px;border-radius:9px;
+  background:linear-gradient(135deg,var(--accent),#3f8f22);
+  display:grid;place-items:center;font-size:1rem;
+  box-shadow:0 0 0 1px #4a7c2c inset;
+}
+.brand small{display:block;font-size:.68rem;color:var(--muted);font-weight:400;letter-spacing:1px}
+.main-nav{display:flex;gap:6px;flex-wrap:wrap}
+.main-nav a{
+  padding:7px 13px;border-radius:9px;font-size:.9rem;color:var(--muted);
+  transition:.2s;
+}
+.main-nav a:hover,.main-nav a.active{background:var(--panel);color:var(--accent-2)}
+.header-tag{
+  font-size:.78rem;color:var(--accent);
+  border:1px solid #3c5a2a;background:#1b2417;
+  padding:5px 11px;border-radius:99px;white-space:nowrap;
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  padding:64px 0 54px;
+  background:
+    radial-gradient(900px 320px at 12% -10%,rgba(124,212,74,.18),transparent 70%),
+    radial-gradient(700px 300px at 88% 0%,rgba(224,83,58,.14),transparent 72%),
+    var(--bg-soft);
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:44px 44px;
+  pointer-events:none;
+}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.35fr .9fr;gap:44px;align-items:center}
+.hero h1{font-size:clamp(1.9rem,4.2vw,2.9rem);line-height:1.25;letter-spacing:.5px}
+.hero h1 em{font-style:normal;color:var(--accent-2)}
+.hero-lead{margin-top:16px;color:var(--muted);font-size:1.02rem;max-width:60ch}
+.hero-actions{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-block;padding:11px 22px;border-radius:11px;
+  font-size:.94rem;font-weight:700;transition:.2s;border:1px solid transparent;
+}
+.btn-primary{background:linear-gradient(135deg,var(--accent),#4d9a25);color:#0d1408}
+.btn-primary:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn-ghost{border-color:var(--line);color:var(--text);background:var(--panel)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent-2)}
+.hero-panel{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);padding:22px;
+}
+.hero-panel h2{font-size:1rem;margin-bottom:14px;color:var(--accent-2);letter-spacing:.5px}
+.stat-list{list-style:none;display:grid;gap:11px}
+.stat-list li{display:flex;justify-content:space-between;gap:12px;font-size:.9rem;color:var(--muted);border-bottom:1px dashed var(--line);padding-bottom:9px}
+.stat-list li:last-child{border-bottom:none;padding-bottom:0}
+.stat-list b{color:var(--text);font-weight:700}
+
+/* ---------- section base ---------- */
+section{padding:56px 0}
+.section-head{margin-bottom:28px}
+.section-head h2{font-size:1.5rem;letter-spacing:.5px}
+.section-head h2 span{color:var(--accent)}
+.section-head p{margin-top:8px;color:var(--muted);font-size:.95rem;max-width:76ch}
+.divider{height:1px;background:var(--line);margin:0}
+
+/* ---------- 类型卡片 ---------- */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);padding:22px;transition:.22s;
+}
+.card:hover{transform:translateY(-3px);border-color:#3d5a2c;box-shadow:0 12px 28px rgba(0,0,0,.35)}
+.card-icon{
+  width:40px;height:40px;border-radius:11px;display:grid;place-items:center;
+  background:#22301a;color:var(--accent-2);font-size:1.15rem;margin-bottom:14px;
+  border:1px solid #37501f;
+}
+.card h3{font-size:1.06rem;margin-bottom:9px}
+.card p{font-size:.9rem;color:var(--muted)}
+.card ul{margin-top:12px;padding-left:18px;font-size:.88rem;color:var(--muted)}
+.card ul li{margin-bottom:5px}
+
+/* ---------- 玩法机制 ---------- */
+.mech{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.mech-item{
+  display:flex;gap:16px;background:var(--bg-soft);
+  border:1px solid var(--line);border-radius:var(--radius);padding:20px;
+}
+.mech-num{
+  flex:0 0 38px;height:38px;border-radius:10px;display:grid;place-items:center;
+  background:#2a1c1a;color:#ff8a6b;font-weight:800;border:1px solid #4a2a24;
+}
+.mech-item h3{font-size:1rem;margin-bottom:7px}
+.mech-item p{font-size:.88rem;color:var(--muted)}
+
+/* ---------- 武器表格 ---------- */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel)}
+table{width:100%;border-collapse:collapse;min-width:640px;font-size:.9rem}
+thead th{
+  text-align:left;padding:14px 16px;background:#202a35;color:var(--accent-2);
+  font-size:.86rem;letter-spacing:.5px;border-bottom:1px solid var(--line);white-space:nowrap;
+}
+tbody td{padding:13px 16px;border-bottom:1px solid var(--line);color:var(--muted)}
+tbody tr:last-child td{border-bottom:none}
+tbody td:first-child{color:var(--text);font-weight:600}
+tbody tr:hover{background:#1a212b}
+
+/* ---------- 生存清单 ---------- */
+.tips{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.tip{
+  background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:10px;padding:18px 20px;
+}
+.tip h3{font-size:.98rem;margin-bottom:8px;color:var(--accent-2)}
+.tip p{font-size:.88rem;color:var(--muted)}
+
+/* ---------- 挑选建议 ---------- */
+.pick{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pick-card{
+  background:linear-gradient(180deg,#1d2530,#171d25);
+  border:1px solid var(--line);border-radius:var(--radius);padding:24px;
+}
+.pick-card h3{font-size:1.02rem;margin-bottom:10px}
+.pick-card p{font-size:.88rem;color:var(--muted)}
+.pick-card .tagline{
+  display:inline-block;margin-bottom:12px;font-size:.74rem;letter-spacing:1px;
+  color:var(--accent);border:1px solid #3c5a2a;background:#1b2417;padding:3px 10px;border-radius:99px;
+}
+
+/* ---------- FAQ ---------- */
+.faq{display:grid;gap:12px}
+details{
+  background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:16px 20px;transition:.2s;
+}
+details[open]{border-color:#3d5a2c}
+summary{
+  cursor:pointer;font-weight:700;font-size:.98rem;list-style:none;
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-size:1.2rem;font-weight:400}
+details[open] summary::after{content:"–"}
+details p{margin-top:12px;font-size:.9rem;color:var(--muted)}
+
+/* ---------- 侧栏 + 正文双栏 ---------- */
+.split{display:grid;grid-template-columns:2fr 1fr;gap:34px;align-items:start}
+.article-body h2{font-size:1.35rem;margin-bottom:14px}
+.article-body h3{font-size:1.05rem;margin:22px 0 9px;color:var(--accent-2)}
+.article-body p{font-size:.94rem;color:var(--muted);margin-bottom:14px}
+.article-body ul{padding-left:20px;font-size:.92rem;color:var(--muted);margin-bottom:16px}
+.article-body ul li{margin-bottom:7px}
+.sidebar{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;position:sticky;top:88px;
+}
+.sidebar h3{font-size:1rem;margin-bottom:14px;color:var(--accent-2)}
+.sidebar ol{padding-left:20px;font-size:.88rem;color:var(--muted);display:grid;gap:9px}
+.sidebar .note{
+  margin-top:18px;padding-top:16px;border-top:1px dashed var(--line);
+  font-size:.82rem;color:#7d8a99;
+}
+
+/* ---------- footer ---------- */
+.site-footer{
+  background:var(--bg-soft);border-top:1px solid var(--line);
+  padding:44px 0 26px;margin-top:20px;
+}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:28px}
+.site-footer h4{font-size:.92rem;margin-bottom:13px;color:var(--accent-2)}
+.site-footer p,.site-footer li{font-size:.85rem;color:var(--muted)}
+.site-footer ul{list-style:none;display:grid;gap:8px}
+.site-footer ul a:hover{color:var(--accent)}
+.footer-bottom{
+  margin-top:32px;padding-top:18px;border-top:1px solid var(--line);
+  font-size:.8rem;color:#6c7885;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:30px}
+  .grid-3,.pick{grid-template-columns:repeat(2,1fr)}
+  .mech{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+  .sidebar{position:static}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .header-inner{flex-wrap:wrap}
+  .header-tag{display:none}
+  .main-nav a{padding:6px 10px;font-size:.85rem}
+  .grid-3,.pick,.tips{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  section{padding:42px 0}
+  .hero{padding:46px 0 40px}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark">🧟</span>
+      <span>打僵尸指南
+        <small>ZOMBIE GAME GUIDE</small>
+      </span>
+    </a>
+    <nav class="main-nav">
+      <a href="#types" class="active">游戏类型</a>
+      <a href="#mechanics">玩法机制</a>
+      <a href="#weapons">武器定位</a>
+      <a href="#survive">生存技巧</a>
+      <a href="#choose">怎么挑</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <span class="header-tag">末日 · 生存 · 射击</span>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <h1>打僵尸：从<em>类型选择</em>到实战生存的完整入门参考</h1>
+        <p class="hero-lead">
+          “打僵尸”通常指以僵尸、丧尸或感染体为主要敌人的一类电子游戏，覆盖第一人称射击、生存建造、塔防、动作闯关等多种形态。
+          玩家最关心的往往是三件事：这类游戏有哪些不同玩法、上手时该注意什么、以及如何按自己的偏好挑到合适的作品。
+          本页围绕这三点展开，帮助你建立清晰的判断框架，而不是只罗列名字。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#types">先看游戏类型</a>
+          <a class="btn btn-ghost" href="#survive">直接看生存技巧</a>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <h2>快速定位：你更想要哪种体验？</h2>
+        <ul class="stat-list">
+          <li><span>想爽快突突突</span><b>射击 / 割草类</b></li>
+          <li><span>想体验紧张压迫</span><b>生存恐怖类</b></li>
+          <li><span>想自己搭基地</span><b>建造生存类</b></li>
+          <li><span>想动脑布防</span><b>塔防 / 策略类</b></li>
+          <li><span>想轻松多人开黑</span><b>合作联机类</b></li>
+          <li><span>想碎片时间玩</span><b>休闲 / 手游类</b></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- ===== 类型 ===== -->
+  <section id="types">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>打僵尸游戏的主要<span>类型划分</span></h2>
+        <p>同样是“打僵尸”，不同子类型的节奏、操作门槛和核心乐趣差别很大。先分清类型，再挑作品，能少走很多弯路。</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <div class="card-icon">🔫</div>
+          <h3>射击与割草类</h3>
+          <p>以枪械射击或近战横扫为核心，敌人数量多、节奏快，强调手感与走位。</p>
+          <ul>
+            <li>常见视角：第一人称 / 第三人称</li>
+            <li>核心乐趣：压制感、连杀反馈</li>
+            <li>适合人群：喜欢快节奏、操作直接</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-icon">🕯️</div>
+          <h3>生存恐怖类</h3>
+          <p>资源稀缺、视野受限，僵尸往往不是被“刷”的，而是需要躲避或谨慎处理。</p>
+          <ul>
+            <li>关键词：弹药有限、解谜、潜行</li>
+            <li>核心乐趣：压迫感与解谜推进</li>
+            <li>适合人群：能接受慢节奏与紧张感</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-icon">🏚️</div>
+          <h3>建造生存类</h3>
+          <p>白天采集、夜晚防守，用围墙、陷阱和据点抵御一波波来袭的感染体。</p>
+          <ul>
+            <li>关键词：采集、建造、昼夜循环</li>
+            <li>核心乐趣：规划与经营带来的安全感</li>
+            <li>适合人群：喜欢长线养成与造家</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-icon">🧱</div>
+          <h3>塔防与策略类</h3>
+          <p>不直接冲进尸群，而是通过布置防线、分配资源来挡住进攻路线。</p>
+          <ul>
+            <li>关键词：路线规划、火力搭配</li>
+            <li>核心乐趣：以少胜多的策略感</li>
+            <li>适合人群：偏好思考而非手速</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-icon">🤝</div>
+          <h3>合作联机类</h3>
+          <p>多人分工推进，有人输出、有人补给、有人开锁，强调配合与角色互补。</p>
+          <ul>
+            <li>关键词：职业分工、语音沟通</li>
+            <li>核心乐趣：和朋友一起扛过难关</li>
+            <li>适合人群：有固定队友的玩家</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-icon">📱</div>
+          <h3>休闲与移动端</h3>
+          <p>单局时间短、操作简化，适合碎片时间，通常以关卡推进或数值成长为主。</p>
+          <ul>
+            <li>关键词：单手操作、关卡制</li>
+            <li>核心乐趣：轻量、随时可玩</li>
+            <li>适合人群：时间零散的通勤玩家</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- ===== 玩法机制 ===== -->
+  <section id="mechanics">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>绕不开的<span>核心玩法机制</span></h2>
+        <p>无论具体作品如何包装，打僵尸类游戏大多围绕下面这几套机制搭建。理解它们，等于拿到了通用说明书。</p>
+      </div>
+      <div class="mech">
+        <div class="mech-item">
+          <div class="mech-num">01</div>
+          <div>
+            <h3>波次与刷新节奏</h3>
+            <p>敌人按波次或时间点成批出现，中间留出喘息窗口。波次间隔是补给、修墙、换弹的关键时间，学会利用间隔比单纯打得准更重要。</p>
+          </div>
+        </div>
+        <div class="mech-item">
+          <div class="mech-num">02</div>
+          <div>
+            <h3>资源与弹药管理</h3>
+            <p>多数作品会限制子弹、药品和材料。常见做法是把高伤害弹药留给精英或特殊感染体，普通杂兵用近战或低消耗手段清理。</p>
+          </div>
+        </div>
+        <div class="mech-item">
+          <div class="mech-num">03</div>
+          <div>
+            <h3>弱点与部位判定</h3>
+            <p>头部通常是通用弱点，部分作品还会设置背部、发光器官等特殊部位。命中弱点往往能节省大量弹药并打断敌人动作。</p>
+          </div>
+        </div>
+        <div class="mech-item">
+          <div class="mech-num">04</div>
+          <div>
+            <h3>噪音与仇恨机制</h3>
+            <p>枪声、爆炸和跑动会吸引附近敌人。想潜行通过时，消音武器、蹲行和绕路是常规手段；想主动清场时，也可以反向利用噪音聚怪。</p>
+          </div>
+        </div>
+        <div class="mech-item">
+          <div class="mech-num">05</div>
+          <div>
+            <h3>昼夜与天气循环</h3>
+            <p>白天相对安全、夜晚压力陡增是常见设计。规划好“白天做什么、夜晚守哪里”，能显著降低翻车概率。</p>
+          </div>
+        </div>
+        <div class="mech-item">
+          <div class="mech-num">06</div>
+          <div>
+            <h3>成长与技能树</h3>
+            <p>通过经验或材料解锁更强武器、更高负重、更快治疗。优先点出与生存直接相关的项目，通常比平均分配更实用。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- ===== 武器定位 ===== -->
+  <section id="weapons">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>常见武器<span>定位与适用场景</span></h2>
+        <p>不同武器解决的问题不同，关键是搭配而非单件强度。下表按通用定位整理，具体数值以各作品实际设定为准。</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>武器类别</th>
+              <th>优势</th>
+              <th>短板</th>
+              <th>适用场景</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>手枪 / 副武器</td>
+              <td>弹药常见、切换快、不占主武器位</td>
+              <td>伤害与弹容量有限</td>
+              <td>应急补刀、清理落单敌人</td>
+            </tr>
+            <tr>
+              <td>霰弹枪</td>
+              <td>近距离爆发高，可一击推开敌人</td>
+              <td>射程短、装填偏慢</td>
+              <td>狭窄通道、被围时的脱身手段</td>
+            </tr>
+            <tr>
+              <td>突击步枪</td>
+              <td>中距离稳定，通用性强</td>
+              <td>弹药消耗较快</td>
+              <td>主力输出、应对成群敌人</td>
+            </tr>
+            <tr>
+              <td>狙击 / 精确步枪</td>
+              <td>单发伤害高，可远距离点名</td>
+              <td>射速低，近身吃亏</td>
+              <td>处理精英怪、占据制高点</td>
+            </tr>
+            <tr>
+              <td>近战武器</td>
+              <td>不消耗弹药，部分可静音</td>
+              <td>需要贴近，风险较高</td>
+              <td>节省弹药、潜行清理</td>
+            </tr>
+            <tr>
+              <td>爆炸物 / 陷阱</td>
+              <td>范围清场，可封路</td>
+              <td>数量稀少，可能误伤自己</td>
+              <td>守点、堵口、处理密集尸群</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- ===== 生存技巧 ===== -->
+  <section id="survive">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>通用<span>生存技巧清单</span></h2>
+        <p>下面这些习惯在大多数打僵尸游戏里都成立，属于可以跨作品迁移的经验。</p>
+      </div>
+      <div class="tips">
+        <div class="tip">
+          <h3>永远留一条退路</h3>
+          <p>进入房间或走廊前先确认出口方向，别让自己被堵在死角。被围住时，退路的价值高于任何一件武器。</p>
+        </div>
+        <div class="tip">
+          <h3>边走边打，别站桩</h3>
+          <p>持续移动能拉开与敌人的距离，也能减少被包围的概率。停下来输出的时间越短越安全。</p>
+        </div>
+        <div class="tip">
+          <h3>优先处理特殊感染体</h3>
+          <p>会远程攻击、会自爆或能召唤同伴的敌人，威胁通常远高于普通杂兵，应优先打断或清除。</p>
+        </div>
+        <div class="tip">
+          <h3>弹药按威胁分级使用</h3>
+          <p>普通敌人用低消耗手段，精英和紧急情况才动用高伤害弹药。养成这个习惯，中期会轻松很多。</p>
+        </div>
+        <div class="tip">
+          <h3>利用地形与高低差</h3>
+          <p>楼梯口、窄门、窗口都是天然的减速带。把敌人限制在一条线上，效率远高于在开阔地硬拼。</p>
+        </div>
+        <div class="tip">
+          <h3>及时整理背包与补给</h3>
+          <p>战斗间隙补状态、修装备、丢垃圾。等到开打才发现没药没弹，往往就是失败的开端。</p>
+        </div>
+        <div class="tip">
+          <h3>控制噪音，主动选择战斗</h3>
+          <p>不是每一波敌人都必须打。能绕则绕，能潜行就潜行，把战斗留给必须打的时候。</p>
+        </div>
+        <div class="tip">
+          <h3>熟悉敌人动作前摇</h3>
+          <p>多数敌人攻击前有明显动作提示。学会读动作，闪避和格挡的成功率会明显提升。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- ===== 挑选建议 ===== -->
+  <section id="choose">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>怎么挑一款<span>适合自己的打僵尸游戏</span></h2>
+        <p>与其看排行榜，不如先明确自己的偏好维度，再对照筛选。</p>
+      </div>
+      <div class="pick">
+        <div class="pick-card">
+          <span class="tagline">按节奏</span>
+          <h3>快节奏还是慢节奏</h3>
+          <p>喜欢连续输出和爽快感，就偏向射击与割草类；喜欢慢慢探索、精打细算，生存恐怖和建造类更合适。</p>
+        </div>
+        <div class="pick-card">
+          <span class="tagline">按人数</span>
+          <h3>单人还是多人</h3>
+          <p>单人更看氛围与叙事，多人更看配合与重复可玩性。有固定队友的话，合作类体验通常更持久。</p>
+        </div>
+        <div class="pick-card">
+          <span class="tagline">按投入</span>
+          <h3>单局时长与上手成本</h3>
+          <p>时间零散就选关卡制、单局短的作品；愿意长期投入，可以选带建造、成长和开放地图的类型。</p>
+        </div>
+        <div class="pick-card">
+          <span class="tagline">按设备</span>
+          <h3>操作方式是否顺手</h3>
+          <p>键鼠适合精确瞄准，手柄适合动作与近战，手机则以触屏简化操作为主。先确认设备匹配度。</p>
+        </div>
+        <div class="pick-card">
+          <span class="tagline">按内容</span>
+          <h3>恐怖强度能否接受</h3>
+          <p>部分作品包含惊吓、血腥或压抑氛围。对这类内容敏感的话，优先选择风格偏卡通或爽快向的作品。</p>
+        </div>
+        <div class="pick-card">
+          <span class="tagline">按更新</span>
+          <h3>长期维护与社区活跃度</h3>
+          <p>持续更新和活跃社区通常意味着更长的可玩周期。可以关注官方公告频率和玩家讨论热度作为参考。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- ===== 正文 + 侧栏 ===== -->
+  <section>
+    <div class="wrap split">
+      <article class="article-body">
+        <h2>打僵尸题材为什么长期受欢迎</h2>
+        <p>
+          僵尸设定的特别之处在于，它把敌人变成了一个“可预期但数量庞大”的群体。玩家知道敌人会朝自己走来，也知道它们行动迟缓、智力有限，
+          因此恐惧感并非来自未知，而是来自持续的压力与资源消耗。这种设计天然适合做成游戏：目标清晰、反馈直接、失败原因容易复盘。
+        </p>
+        <p>
+          同时，僵尸题材对叙事非常宽容。它可以承载末日求生、团队协作、人性抉择，也可以单纯作为射击靶子存在。
+          所以同一题材下能同时容纳硬核生存模拟和轻松休闲小品，这在其他题材里并不常见。
+        </p>
+
+        <h3>新手最容易踩的几个坑</h3>
+        <ul>
+          <li><strong>贪弹药：</strong>舍不得用高伤害武器，结果被精英怪拖到弹尽粮绝。</li>
+          <li><strong>贪资源：</strong>为了一个补给点冒险深入，反而丢掉更多已有物资。</li>
+          <li><strong>不看提示：</strong>忽略教程里的弱点、仇恨和建造说明，后面靠试错补课成本更高。</li>
+          <li><strong>忽视据点：</strong>在建造类作品里只顾外出搜刮，回家发现防线早已被拆穿。</li>
+          <li><strong>单打独斗：</strong>合作类作品里脱离队伍行动，往往既救不了人，也保不住自己。</li>
+        </ul>
+
+        <h3>如何判断自己是否适合这类游戏</h3>
+        <p>
+          如果你享受“用有限资源解决明确问题”的过程，喜欢看到自己的操作或规划带来直接结果，
+          并且能接受一定程度的紧张感，那么打僵尸类作品大概率会对你胃口。
+          反之，如果你更偏好轻松无压力、没有失败惩罚的体验，可以优先考虑画风明亮、节奏轻快的休闲向作品。
+        </p>
+        <p>
+          最后提醒一点：不同作品对“僵尸”的设定差异很大，有的强调感染变异，有的偏向超自然。
+          在挑选时，除了看玩法类型，也建议留意世界观设定是否符合自己的兴趣，这会直接影响沉浸感。
+        </p>
+      </article>
+
+      <aside class="sidebar">
+        <h3>上手顺序建议</h3>
+        <ol>
+          <li>先完成教程与基础操作练习</li>
+          <li>用低难度熟悉敌人类型与刷新规律</li>
+          <li>确定一把主力武器并练熟换弹节奏</li>
+          <li>尝试规划一条安全的搜刮路线</li>
+          <li>再逐步挑战更高难度或多人模式</li>
+        </ol>
+        <p class="note">
+          提示：以上为通用建议，具体操作请以各作品内的教程与官方说明为准。
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>常见<span>问题解答</span></h2>
+        <p>整理了一些初次接触打僵尸题材时较常出现的疑问。</p>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>打僵尸游戏一定要枪法好吗？</summary>
+          <p>不一定。射击类确实对手感有要求，但塔防、建造和策略类更看重规划与资源分配。即使是射击类，走位、地形利用和弹药管理往往比单纯准度更能决定成败。</p>
+        </details>
+        <details>
+          <summary>单人玩会不会很难坚持？</summary>
+          <p>取决于类型。生存恐怖和剧情向作品通常为单人体验设计，节奏完整；而强调波次防守和重复刷取的作品，多人组队体验会更轻松。挑选时可以留意作品是否主打单人或联机。</p>
+        </details>
+        <details>
+          <summary>这类游戏对配置要求高吗？</summary>
+          <p>跨度很大。偏像素或卡通风的作品对硬件要求通常较低，而写实风格、同屏敌人数量多的作品则需要更好的显卡与处理器。购买前建议查看官方公布的配置要求。</p>
+        </details>
+        <details>
+          <summary>害怕恐怖内容还能玩吗？</summary>
+          <p>可以。题材内部风格差异明显，不少作品采用夸张卡通或爽快动作路线，惊吓元素较少。可以优先选择画风明亮、以战斗和建造为主的作品。</p>
+        </details>
+        <details>
+          <summary>新手应该先练什么？</summary>
+          <p>建议从三件事入手：熟悉敌人动作与弱点、养成移动中作战的习惯、学会在战斗间隙整理补给。这三点在大多数作品里都能直接提升生存率。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>打僵尸指南</h4>
+        <p>围绕僵尸题材游戏整理类型划分、玩法机制、武器定位与生存技巧，帮助玩家建立清晰的挑选与上手指南。</p>
+      </div>
+      <div>
+        <h4>内容导航</h4>
+        <ul>
+          <li><a href="#types">游戏类型</a></li>
+          <li><a href="#mechanics">玩法机制</a></li>
+          <li><a href="#weapons">武器定位</a></li>
+          <li><a href="#survive">生存技巧</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>实用参考</h4>
+        <ul>
+          <li><a href="#choose">如何挑选</a></li>
+          <li><a href="#faq">常见问题</a></li>
+          <li><a href="#top">返回顶部</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>说明</h4>
+        <ul>
+          <li>内容为通用经验整理</li>
+          <li>具体设定以作品为准</li>
+          <li>不涉及任何下载引导</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>打僵尸 · 僵尸题材游戏玩法与生存参考</span>
+      <span>页面内容仅供学习与参考</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('.main-nav a');
+  links.forEach(function(link){
+    link.addEventListener('click', function(){
+      links.forEach(function(l){ l.classList.remove('active'); });
+      link.classList.add('active');
+    });
+  });
+})();
+</script>
+
+</body>
+            </html>
